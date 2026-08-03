@@ -98,7 +98,7 @@ export async function fetchHeadlines(): Promise<Headline[]> {
   let jsonStrToParse = "";
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-04-17",
+      model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         tools: [{googleSearch: {}}], // Enable Google Search grounding

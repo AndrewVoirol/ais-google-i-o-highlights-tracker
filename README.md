@@ -2,33 +2,33 @@
 
 ![Demo](screenshots/demo.gif)
 
-A real-time dashboard tracking the latest AI-generated announcements and updates from Google I/O 2025, providing a clear overview of the new products, features, and key themes discussed during the event.
+A dark, glassmorphism-styled dashboard that pulls AI-generated announcements from Google I/O 2025. Categorized, timestamped, and searchable — built to look like the event page you wish existed.
 
 ## Quick Start
 
-| Step | Command |
-|------|---------|
-| **1. Clone** | `git clone <repo-url> && cd <repo-dir>` |
-| **2. Install** | `npm install` |
-| **3. Setup Env** | Add `VITE_GEMINI_API_KEY` to `.env.local` |
-| **4. Run** | `npm run dev` |
+```bash
+git clone <repo-url> && cd ais-google-i-o-highlights-tracker
+npm install
+cp .env.example .env.local  # Add your Gemini API key
+npm run dev
+```
 
-*Requires Node.js 18+*
+*Requires Node.js 18+. Works without an API key too — falls back to sample data.*
 
-## How It Works
+## What It Does
 
-This application provides a dynamic dashboard for Google I/O 2025 announcements. 
+Click **Refresh Announcements** to generate a batch of plausible I/O highlights via Gemini. Each announcement gets categorized, timestamped, and displayed in a card grid with status badges (Available, Beta, Preview, Waitlist). No API key? The app gracefully falls back to hardcoded demo data so you can still see the UI.
 
-- **Dynamic Loading:** The application automatically attempts to fetch the initial batch of announcements on load.
-- **Categorization:** Announcements are automatically grouped into relevant categories (like "AI & Machine Learning", "Android & Mobile", etc.) and displayed in chronological order.
-- **Interactive Fetching:** Users can click the "Refresh/Load More Announcements" button to continuously poll the system for any new updates.
-- **Status Indicators:** Each announcement card prominently displays its availability status (e.g., Preview, Beta, Available) via color-coded badges.
+![Initial view with hero and announcements](screenshots/initial-state.png)
+
+![Scrolled view showing categorized cards](screenshots/populated-view.png)
 
 ## Tech Stack
 
 | Category | Technology |
 |----------|------------|
 | Framework | React 19 + Vite |
-| Styling | Tailwind CSS |
+| Styling | Tailwind CSS 3 |
 | Language | TypeScript |
-| API | Google GenAI SDK |
+| API | Google GenAI SDK (`gemini-2.5-flash`) |
+| Design | Glassmorphism, dark theme, Inter font |

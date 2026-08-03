@@ -2,4 +2,142 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles - Tailwind CDN handles utility classes via index.html */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  body {
+    background: #0a1118;
+    color: #e2e8f0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(0, 188, 212, 0.3);
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(0, 188, 212, 0.08);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00BCD4, #4285F4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #00BCD4, #4285F4);
+    color: white;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #4285F4, #00BCD4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+  }
+
+  .status-available {
+    background: rgba(52, 168, 83, 0.15);
+    color: #6dd897;
+    border-color: rgba(52, 168, 83, 0.25);
+  }
+
+  .status-beta {
+    background: rgba(66, 133, 244, 0.15);
+    color: #82b1ff;
+    border-color: rgba(66, 133, 244, 0.25);
+  }
+
+  .status-preview {
+    background: rgba(255, 179, 0, 0.15);
+    color: #ffd54f;
+    border-color: rgba(255, 179, 0, 0.25);
+  }
+
+  .status-waitlist {
+    background: rgba(255, 111, 97, 0.15);
+    color: #ff8a80;
+    border-color: rgba(255, 111, 97, 0.25);
+  }
+
+  .category-divider {
+    height: 2px;
+    background: linear-gradient(90deg, #00BCD4, transparent 60%);
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
